@@ -1,0 +1,10 @@
+{
+  "appId": "com.qmetaram.qmetaram",
+  "appName": "Qmetaram AI Agent",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}
