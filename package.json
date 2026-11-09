@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:dist": "rsync -a --delete ../qhub/dist/ ./dist/ && echo 'dist همگام شد'"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,6 @@
     "@capacitor/cli": "^8.5.3",
     "@capacitor/core": "^8.5.3",
     "@capacitor/ios": "^8.6.0"
-  }
+  },
+  "devDependencies": {}
 }

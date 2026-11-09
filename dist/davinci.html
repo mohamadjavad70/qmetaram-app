@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Da Vinci Creative Atelier | Qmetaram</title>
+<style>
+:root{--bg:#f4efe4;--panel:#faf7f0;--ink:#29261f;--muted:#777064;--line:#d9d0bf;--accent:#3c7776;--accent-ink:#fff;--shadow:0 10px 35px #392d1710}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body.midnight{--bg:#171b1b;--panel:#202727;--ink:#e9e4d8;--muted:#a8aaa0;--line:#3c4743;--accent:#9dc6b0;--accent-ink:#17201c;--shadow:0 10px 35px #0003}
+button,input,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:auto;padding:0 34px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding:16px 0}.brand{font-size:11px;letter-spacing:.16em;color:var(--muted)}.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:10px 14px;border-radius:3px;transition:.15s}.btn:hover{border-color:var(--accent)}.btn:disabled{opacity:.55;cursor:not-allowed}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:46px 0 38px}.eyebrow,.label{font-size:11px;letter-spacing:.17em;font-weight:650;color:var(--accent)}.eyebrow:before{content:"";display:inline-block;width:30px;height:1px;background:var(--accent);vertical-align:middle;margin-right:10px}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6vw,72px);font-weight:400;letter-spacing:.04em;line-height:1;margin:15px 0}.hero h1 span{display:block;font:500 19px/1.5 ui-sans-serif,system-ui;letter-spacing:.2em;margin-top:13px}.hero p{color:var(--muted);font-size:17px}.study{width:150px;height:150px;flex:none;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--accent);font:italic 20px Georgia;position:relative}.study:before,.study:after{content:"";position:absolute;border:1px solid var(--accent);opacity:.5}.study:before{width:70%;height:70%;border-radius:50%}.study:after{width:1px;height:130%;border-width:0 1px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;gap:6px}.tab{border:0;background:transparent;color:var(--muted);padding:14px 8px;text-align:center;transition:.15s}.tab.active{background:var(--accent);color:var(--accent-ink)}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:34px;padding:30px 0 50px}.sidebar{border-right:1px solid var(--line);padding-right:26px}.section{border-bottom:1px solid var(--line);padding:0 0 22px;margin-bottom:22px}.section p{color:var(--muted);font-size:13px}.section-head{display:flex;justify-content:space-between;align-items:center}.upload{width:100%;min-height:112px;border:1px dashed var(--line);background:var(--panel);color:var(--muted);padding:18px 10px}.inspirations{display:flex;flex-direction:column;gap:6px}.inspire{background:none;border:0;border-bottom:1px solid var(--line);text-align:left;padding:8px 0;color:var(--muted);font-size:12px}.inspire:hover{color:var(--accent)}
+.workspace-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.status{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 11px}.canvas{min-height:420px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;position:relative;overflow:hidden}.canvas:before,.canvas:after{content:"";position:absolute;width:25px;height:25px;border-color:var(--accent);opacity:.65}.canvas:before{left:12px;top:12px;border-left:1px solid;border-top:1px solid}.canvas:after{right:12px;bottom:12px;border-right:1px solid;border-bottom:1px solid}
+.empty{max-width:530px;position:relative}.big-study{font:italic 120px/1 Georgia,serif;color:var(--accent);opacity:.14}.empty h2{font:400 clamp(24px,3vw,36px)/1.25 Georgia,serif;margin:16px 0 10px}.empty p{color:var(--muted);font-size:14px}
+.composer{border:1px solid var(--line);background:var(--panel);margin-top:18px;padding:18px}.compose-top,.compose-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.compose-top{margin-bottom:10px}.compose-bottom{border-top:1px solid var(--line);padding-top:13px;margin-top:12px;flex-wrap:wrap}.composer textarea{width:100%;min-height:115px;resize:vertical;border:0;outline:0;background:transparent;color:var(--ink);font-size:15px;line-height:1.7}.composer textarea::placeholder{color:var(--muted)}.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.count{font-size:12px;color:var(--muted)}.preview-img{max-width:100%;max-height:440px;object-fit:contain;border-radius:2px;box-shadow:var(--shadow)}.foot{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px;margin-top:14px}.conversation{width:100%;text-align:left;max-height:520px;overflow:auto}.message{padding:12px 0;border-bottom:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere}.message strong{color:var(--accent);font-size:11px;letter-spacing:.12em}.hidden{display:none!important}
+@media(max-width:800px){.shell{padding:0 18px}.hero{padding:32px 0}.study{display:none}.layout{grid-template-columns:1fr;gap:24px}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:0}.tabs{grid-template-columns:repeat(2,1fr)}.canvas{min-height:340px}.section{margin-bottom:18px}.inspirations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{align-items:flex-start}.brand{max-width:55%}}
+
+/* ═══ Secrets — integrated with design tokens ═══ */
+.secrets-toggle{display:inline-flex;align-items:center;gap:6px;padding:10px 13px;border-radius:3px;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--muted);transition:.18s}
+.secrets-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.secrets-toggle.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+
+.qvs-stage{position:fixed;inset:0;z-index:9000;background:rgba(20,17,10,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:20px 24px;gap:14px;color:#e9e4d8;animation:qvsIn .3s ease}
+body:not(.midnight) .qvs-stage{background:rgba(26,22,14,.95)}
+.qvs-stage[hidden]{display:none!important}
+@keyframes qvsIn{from{opacity:0}to{opacity:1}}
+.qvs-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.qvs-title{font:400 17px/1.2 Georgia,serif;letter-spacing:.04em;color:#e9e4d8;display:flex;align-items:center;gap:10px}
+.qvs-title em{font-style:normal;color:#9dc6b0;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.17em;font-weight:650}
+.qvs-progress{flex:1;min-width:140px;height:2px;background:rgba(255,255,255,.14);border-radius:99px;overflow:hidden;position:relative}
+.qvs-progress>i{display:block;height:100%;width:0;background:#9dc6b0;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.qvs-stat{font-size:11px;letter-spacing:.06em;color:rgba(233,228,216,.7)}
+.qvs-stat b{color:#9dc6b0;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.qvs-head .spacer{flex:1}
+.qvs-close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e9e4d8;padding:7px 13px;border-radius:3px;font-size:12px;cursor:pointer;transition:.15s}
+.qvs-close:hover{border-color:#9dc6b0;color:#9dc6b0}
+.qvs-close.qvs-reveal{border-color:rgba(157,198,176,.4);color:#9dc6b0}
+.qvs-imgwrap{position:relative;flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:3px;background:rgba(0,0,0,.35);min-height:0}
+.qvs-imgwrap img{max-width:100%;max-height:100%;display:block;user-select:none;-webkit-user-drag:none;cursor:crosshair;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.qvs-imgwrap.readonly img{cursor:default}
+.qvs-glow{position:absolute;width:11%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;border:2px solid #9dc6b0;box-shadow:0 0 20px 4px rgba(157,198,176,.5);animation:qvsPulse 1.8s ease-in-out infinite}
+@keyframes qvsPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1}50%{transform:translate(-50%,-50%) scale(1.1);opacity:.75}}
+.qvs-glow.miss{border-color:#c85454;box-shadow:0 0 16px 3px rgba(200,84,84,.4);animation:none;opacity:.5}
+.qvs-glow.found{border-color:#5dc47b;box-shadow:0 0 24px 6px rgba(93,196,123,.5)}
+.qvs-hints{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.qvs-hint{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:8px 13px;font-size:12px;color:#e9e4d8;display:inline-flex;align-items:center;gap:8px;transition:.25s;font-family:Inter,sans-serif}
+.qvs-hint .num{background:#9dc6b0;color:#17201c;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.qvs-hint.found{opacity:.4;text-decoration:line-through;border-color:rgba(93,196,123,.4)}
+.qvs-modal{position:fixed;inset:0;z-index:9100;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;padding:20px;animation:qvsIn .2s ease}
+.qvs-modal[hidden]{display:none!important}
+.qvs-modal-box{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:28px 26px;max-width:440px;width:100%;text-align:center;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.5);animation:qvsPop .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes qvsPop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.qvs-emoji{font-size:44px;line-height:1;margin-bottom:12px}
+.qvs-mtitle{font:400 22px/1.2 Georgia,serif;color:var(--ink);margin-bottom:14px;letter-spacing:.02em}
+.qvs-mbody{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px}
+.qvs-mbody em{color:var(--accent);font-style:normal;font-weight:600}
+.qvs-toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:9200;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:12px 22px;border-radius:3px;font-size:13px;box-shadow:0 12px 40px rgba(0,0,0,.3);animation:qvsIn .2s ease;max-width:80vw;text-align:center}
+.qvs-toast.err{border-color:#c85454;color:#c85454}
+@media(max-width:640px){.qvs-stage{padding:14px}.qvs-title{font-size:15px}.qvs-hint{font-size:11px;padding:7px 10px}.compose-bottom{gap:8px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="topbar">
+    <button class="btn" onclick="history.length>1?history.back():location.href='/'">← Back</button>
+    <span class="brand">QMETARAM / VISUAL ARTS</span>
+    <button class="btn" id="themeBtn">☾ Midnight</button>
+  </nav>
+  <header class="hero">
+    <div><div class="eyebrow">THE ART OF POSSIBILITY</div><h1>DA VINCI<span>CREATIVE ATELIER</span></h1><p>From first sketch to moving image.</p></div>
+    <div class="study" aria-hidden="true">φ · 1.618</div>
+  </header>
+  <nav class="tabs" aria-label="Studio mode">
+    <button class="tab active" data-mode="generate">▧ &nbsp; Create Image</button>
+    <button class="tab" data-mode="edit">♧ &nbsp; Edit Image</button>
+    <button class="tab" data-mode="video">▷ &nbsp; Create Video</button>
+    <button class="tab" data-mode="chat">☷ &nbsp; Creative Chat</button>
+  </nav>
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="section">
+        <div class="section-head"><span class="label">YOUR WORKSPACE</span><span class="count" id="modeCount">01 / 04</span></div>
+        <p id="modeDescription">Describe your subject, light and composition. Begin with an idea, not a perfect prompt.</p>
+      </section>
+      <section class="section">
+        <div class="section-head"><span class="label" id="uploadLabel">REFERENCE MATERIAL</span><span style="color:var(--accent)">＋</span></div>
+        <input type="file" id="fileInput" accept="image/*,.pdf,.txt" class="hidden">
+        <button class="upload" id="uploadBtn">↑<br><span id="uploadText">Add a reference</span><br><small>Image, PDF or text · up to 10 MB</small></button>
+        <div id="filePreview"></div>
+      </section>
+      <section class="section">
+        <div class="label">A SPARK OF INSPIRATION</div>
+        <div class="inspirations" id="inspirations"></div>
+      </section>
+      <div style="color:var(--accent);font:italic 18px Georgia">کم‌گوی و گزیده‌گوی</div><small style="color:var(--muted)">Say less, create more.</small>
+    </aside>
+    <section>
+      <div class="workspace-head"><span class="label" id="canvasLabel">THE CANVAS</span><span class="status" id="status">✓ Ready to create</span></div>
+      <div class="canvas" id="canvas">
+        <div class="empty"><div class="big-study">◯</div><div class="label">IMAGINATION, MADE VISIBLE</div><h2 id="emptyTitle">Give your imagination a canvas.</h2><p id="emptyText">Write your vision below, or borrow a spark of inspiration.</p></div>
+      </div>
+      <div class="composer">
+        <div class="compose-top"><label class="label" id="promptLabel" for="prompt">YOUR CREATIVE BRIEF</label><button class="btn" id="clearBtn">× Clear</button></div>
+        <textarea id="prompt" maxlength="10000" placeholder="A still life of pears and wildflowers, warm window light, delicate oil brushwork…"></textarea>
+        <div class="compose-bottom">
+          <div><button class="btn" id="attachBtn">↑ Attach</button> <span class="count" id="count">0 / 10,000</span></div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <button class="btn secrets-toggle" id="secretsToggle" type="button" title="افزودن ۳ راز پنهان به تصویر">🔍 3 Secrets</button>
+            <button class="btn primary" id="submitBtn">✧ Create image</button>
+          </div>
+        </div>
+        <p class="count" id="note">Connected to Qmetaram API · uses your guest quota.</p>
+      </div>
+      <div class="foot"><span id="modeFoot">DA VINCI / CREATE IMAGE</span><span>Art is never finished. Only begun.</span></div>
+    </section>
+  </main>
+</div>
+
+<!-- ═══ Secrets immersive stage ═══ -->
+<div class="qvs-stage" id="qvs-stage" hidden>
+  <div class="qvs-head">
+    <div class="qvs-title">🎭 <em>DA VINCI SECRETS</em></div>
+    <div class="qvs-progress"><i id="qvs-progress"></i></div>
+    <div class="qvs-stat">SCORE <b id="qvs-score">0</b></div>
+    <div class="qvs-stat">FOUND <b id="qvs-found">0/3</b></div>
+    <div class="spacer"></div>
+    <button class="qvs-close qvs-reveal" id="qvs-reveal" type="button">👁 Reveal</button>
+    <button class="qvs-close" id="qvs-close" type="button">✕ Close</button>
+  </div>
+  <div class="qvs-imgwrap" id="qvs-imgwrap">
+    <img id="qvs-img" alt="da vinci secret" />
+  </div>
+  <div class="qvs-hints" id="qvs-hints"></div>
+</div>
+
+<div class="qvs-modal" id="qvs-modal" hidden>
+  <div class="qvs-modal-box">
+    <div class="qvs-emoji" id="qvs-emoji">🎯</div>
+    <div class="qvs-mtitle" id="qvs-mtitle">—</div>
+    <div class="qvs-mbody" id="qvs-mbody">—</div>
+    <button class="btn primary" id="qvs-modal-close" type="button">Got it</button>
+  </div>
+</div>
+
+<script>
+/* ═══════ Original design logic ═══════ */
+const modes={
+ generate:{label:"Create Image",count:"01 / 04",title:"Give your imagination a canvas.",desc:"Describe your subject, light and composition. Begin with an idea, not a perfect prompt.",placeholder:"A still life of pears and wildflowers, warm window light, delicate oil brushwork…",action:"✧ Create image",upload:"Add a reference",uploadLabel:"REFERENCE MATERIAL",canvas:"THE CANVAS",prompt:"YOUR CREATIVE BRIEF",text:"Write your vision below, or borrow a spark of inspiration."},
+ edit:{label:"Edit Image",count:"02 / 04",title:"A new perspective on your original.",desc:"Upload an original image, then describe the changes you want to make.",placeholder:"Keep the composition, soften the light and add a warm sfumato atmosphere…",action:"✧ Edit image",upload:"Upload an image",uploadLabel:"ORIGINAL IMAGE",canvas:"THE CANVAS",prompt:"YOUR CREATIVE BRIEF",text:"Your original is the starting point. Add an image and describe its next chapter."},
+ video:{label:"Create Video",count:"03 / 04",title:"Set your imagination in motion.",desc:"Describe a scene and its movement. Add an optional image as your starting frame.",placeholder:"A slow cinematic pan across a Renaissance workshop, sunlight catching dust in the air…",action:"▷ Create video",upload:"Add a starting frame",uploadLabel:"REFERENCE MATERIAL",canvas:"THE CANVAS",prompt:"YOUR CREATIVE BRIEF",text:"A scene. A movement. A moment worth bringing to life."},
+ chat:{label:"Creative Chat",count:"04 / 04",title:"Every great work begins with a question.",desc:"Explore an idea, study a technique or find a fresh creative direction.",placeholder:"How can I bring more depth and balance to my composition?",action:"↗ Send message",upload:"Add a reference",uploadLabel:"REFERENCE MATERIAL",canvas:"CREATIVE DIALOGUE",prompt:"YOUR QUESTION",text:"Ask Da Vinci about your next idea, composition or creative challenge."}
+};
+const ideas=[
+["Renaissance sketch","A Renaissance figure study in silverpoint and charcoal on aged paper, delicate cross-hatching, anatomical precision and handwritten marginal notes."],
+["Sfumato portrait","A contemplative Renaissance portrait with soft sfumato transitions, subtle earth tones, a distant landscape and gentle diffused light."],
+["Sepia engineering codex","A sepia engineering codex of a flying machine, intricate pen-and-ink diagrams, mechanical details, exploded views and manuscript annotations on parchment."],
+["Golden-ratio still life","An oil-painted still life of pears, a ceramic vessel and wildflowers arranged along the golden ratio, warm window light and a restrained earthy palette."],
+["Cinematic motion","A slow cinematic tracking shot through a Renaissance atelier, golden afternoon light, floating dust, sketches and sculptures, gentle natural camera motion."]
+];
+let active="generate", file=null, dark=false;
+const $=id=>document.getElementById(id);
+function setMode(key){active=key;const m=modes[key];document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.mode===key));$("modeCount").textContent=m.count;$("modeDescription").textContent=m.desc;$("emptyTitle").textContent=m.title;$("emptyText").textContent=m.text;$("prompt").placeholder=m.placeholder;$("submitBtn").textContent=m.action;$("uploadText").textContent=m.upload;$("uploadLabel").textContent=m.uploadLabel;$("canvasLabel").textContent=m.canvas;$("promptLabel").textContent=m.prompt;$("modeFoot").textContent="DA VINCI / "+m.label.toUpperCase();$("status").textContent="✓ Ready to create"}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+ideas.forEach(([name,prompt])=>{const b=document.createElement("button");b.className="inspire";b.textContent="✧ "+name+" ↗";b.onclick=()=>{$("prompt").value=prompt;updateCount()};$("inspirations").appendChild(b)});
+$("prompt").addEventListener("input",updateCount);function updateCount(){$("count").textContent=$("prompt").value.length.toLocaleString()+" / 10,000"}
+$("clearBtn").onclick=()=>{$("prompt").value="";updateCount();$("prompt").focus()};
+$("themeBtn").onclick=()=>{dark=!dark;document.body.classList.toggle("midnight",dark);$("themeBtn").textContent=dark?"☼ Atelier":"☾ Midnight"};
+$("uploadBtn").onclick=()=>$("fileInput").click();$("attachBtn").onclick=()=>$("fileInput").click();
+$("fileInput").addEventListener("change",e=>{file=e.target.files[0];if(!file)return;if(file.size>10*1024*1024){alert("Maximum file size is 10 MB.");file=null;return}const p=$("filePreview");p.innerHTML="";const info=document.createElement("p");info.textContent=file.name+" · "+(file.size/1024).toFixed(1)+" KB";info.style.color="var(--muted)";p.appendChild(info);if(file.type.startsWith("image/")){const img=document.createElement("img");img.className="preview-img";img.style.maxHeight="180px";img.src=URL.createObjectURL(file);img.alt="reference";p.appendChild(img);if(active==="generate")setMode("edit")}});
+
+/* ═══════ Qmetaram API integration ═══════ */
+function getToken(){
+  const u=new URLSearchParams(location.search).get('token');
+  if(u) return u;
+  if(window.Q_GUEST_TOKEN) return window.Q_GUEST_TOKEN;
+  try{ return localStorage.getItem('Q_GUEST_TOKEN')||localStorage.getItem('q-token')||''; }catch(_){return ''}
+}
+async function api(path, body){
+  const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Q-Token':getToken()},body:JSON.stringify(body)});
+  let j; try{ j=await r.json(); }catch(_){ j={error:'invalid_response',status:r.status}; }
+  return {ok:r.ok, status:r.status, data:j};
+}
+function toast(msg, isErr){
+  const el=document.createElement('div');
+  el.className='qvs-toast'+(isErr?' err':'');
+  el.textContent=msg; document.body.appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';el.style.transition='.4s';setTimeout(()=>el.remove(),400);},2600);
+}
+function showImageInCanvas(url, caption){
+  const c=$('canvas'); c.innerHTML=''; c.style.alignItems='center'; c.style.justifyContent='center';
+  const wrap=document.createElement('div');
+  wrap.style.cssText='max-width:100%;display:flex;flex-direction:column;align-items:center;gap:12px';
+  const img=document.createElement('img'); img.src=url; img.className='preview-img';
+  wrap.appendChild(img);
+  if(caption){const p=document.createElement('p');p.style.cssText='color:var(--muted);font-size:12px;margin:0';p.textContent=caption;wrap.appendChild(p);}
+  c.appendChild(wrap);
+}
+
+/* ═══════ Normal generation ═══════ */
+async function generateNormal(prompt){
+  $('status').textContent='⏳ Generating…';
+  const res=await api('/api/v1/tools/generate_with_thinking',{
+    prompt, thinking:true, model:'flux-realism', ratio:'1:1', style:'photoreal'
+  });
+  if(!res.ok||res.data.error){
+    toast(res.data.error||('HTTP '+res.status),true);
+    $('status').textContent='✗ '+(res.data.error||res.status);
+    return;
+  }
+  const d=res.data;
+  const url=d.image_url||d.url||(d.result&&d.result.url)||(d.data&&d.data.url);
+  if(!url){ toast('No image URL in response',true); $('status').textContent='✗ no url'; return; }
+  showImageInCanvas(url,'Generated · '+(d.model||'flux-realism'));
+  $('status').textContent='✓ Done'+(d.took?' · '+d.took:'');
+}
+
+/* ═══════ Secrets flow ═══════ */
+const qvs={active:false, image_id:null, total:0, found:0, score:0, secrets:[], busy:false, revealed:false};
+
+$('secretsToggle').addEventListener('click',function(){
+  qvs.active=!qvs.active;
+  this.classList.toggle('on', qvs.active);
+  this.textContent = qvs.active ? '🔍 3 Secrets ✓' : '🔍 3 Secrets';
+  $('note').textContent = qvs.active
+    ? '🎭 Secrets mode: تصویر با ۳ راز پنهان ساخته می‌شود. روی تصویر کلیک کن تا حدس بزنی.'
+    : 'Connected to Qmetaram API · uses your guest quota.';
+});
+
+async function generateWithSecrets(prompt){
+  $('status').textContent='⏳ Generating with 3 secrets…';
+  const res=await api('/api/v1/davinci/secrets/create',{
+    prompt, thinking:true, model:'flux-realism', aspect_ratio:'1:1',
+    style:'photoreal', num_secrets:3
+  });
+  if(!res.ok||res.data.error){
+    toast(res.data.error||('HTTP '+res.status),true);
+    $('status').textContent='✗ '+(res.data.error||res.status);
+    return;
+  }
+  const j=res.data;
+  qvs.image_id=j.image_id;
+  qvs.total=j.num_secrets||(j.secrets||[]).length;
+  qvs.found=0; qvs.score=0; qvs.revealed=false;
+  qvs.secrets=(j.secrets||[]).map(s=>({id:s.id,hint:s.hint,found:false}));
+  // pre-show in canvas too
+  showImageInCanvas(j.image_url,'🎭 3 secrets hidden · click 🔍 again to enter game');
+  // open immersive stage
+  qvsOpenStage(j.image_url);
+  $('status').textContent='✓ 3 secrets active';
+}
+
+function qvsOpenStage(url){
+  $('qvs-imgwrap').classList.remove('readonly');
+  document.querySelectorAll('.qvs-glow').forEach(n=>n.remove());
+  $('qvs-img').src=url;
+  $('qvs-img').onload=()=>{ $('qvs-stage').hidden=false; qvsRender(); };
+}
+function qvsRender(){
+  $('qvs-score').textContent=Math.round(qvs.score*100)/100;
+  $('qvs-found').textContent=qvs.found+'/'+qvs.total;
+  $('qvs-progress').style.width=(qvs.total?(qvs.found/qvs.total*100):0)+'%';
+  const h=$('qvs-hints'); h.innerHTML='';
+  qvs.secrets.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='qvs-hint'+(s.found?' found':'');
+    const num=document.createElement('span'); num.className='num'; num.textContent=(i+1);
+    const txt=document.createElement('span'); txt.textContent=s.hint||'';
+    d.appendChild(num); d.appendChild(txt);
+    h.appendChild(d);
+  });
+}
+function qvsGlow(gx,gy,cls){
+  const d=document.createElement('div');
+  d.className='qvs-glow'+(cls?' '+cls:'');
+  d.style.left=(gx*100)+'%'; d.style.top=(gy*100)+'%';
+  $('qvs-imgwrap').appendChild(d);
+  return d;
+}
+function qvsModal(emoji,title,body){
+  $('qvs-emoji').textContent=emoji;
+  $('qvs-mtitle').textContent=title;
+  $('qvs-mbody').innerHTML=body;
+  $('qvs-modal').hidden=false;
+}
+
+$('qvs-img').addEventListener('click',async function(ev){
+  if(!qvs.total||qvs.busy||qvs.revealed) return;
+  if(qvs.found>=qvs.total) return;
+  if($('qvs-imgwrap').classList.contains('readonly')) return;
+  const r=this.getBoundingClientRect();
+  const gx=(ev.clientX-r.left)/r.width;
+  const gy=(ev.clientY-r.top)/r.height;
+  if(gx<0||gx>1||gy<0||gy>1) return;
+  const target=qvs.secrets.find(s=>!s.found);
+  if(!target) return;
+  qvs.busy=true;
+  const glow=qvsGlow(gx,gy,'');
+  try{
+    const res=await api('/api/v1/davinci/secrets/guess',{image_id:qvs.image_id,secret_id:target.id,gx,gy});
+    const j=res.data;
+    if(j.error){ glow.classList.add('miss'); toast(j.error,true); return; }
+    if(j.correct){
+      target.found=true; qvs.found++; qvs.score+=Number(j.score||0);
+      glow.classList.add('found'); qvsRender();
+      const emoji=j.verdict==='perfect'?'🎯':(j.verdict==='close'?'🔥':'🌫️');
+      const title=j.verdict==='perfect'?'Perfect!':(j.verdict==='close'?'So close!':'Very near…');
+      const label=j.verdict==='perfect'?'Secret unlocked:':(j.verdict==='close'?'Almost touched it. Secret was:':'Right direction. Secret is here:');
+      const narr=j.narrative?('<em>'+j.narrative.replace(/</g,'&lt;')+'</em>'):'';
+      qvsModal(emoji,title,'<div style="margin-bottom:8px">'+label+'</div>'+narr+'<div style="margin-top:12px;font-size:13px">+ '+j.score+'</div>');
+      if(qvs.found>=qvs.total){
+        $('qvs-imgwrap').classList.add('readonly');
+        setTimeout(()=>qvsModal('🎉','All secrets found!',
+          'Da Vinci: «Bravo. You saw the path. »<div style="margin-top:14px;font-size:20px;color:var(--accent)"><b>'+Math.round(qvs.score*100)/100+'</b> / 100</div>'),900);
+      }
+    } else {
+      glow.classList.add('miss');
+      setTimeout(()=>{glow.style.transition='.6s';glow.style.opacity='0';setTimeout(()=>glow.remove(),600);},1600);
+      qvsModal('💨','Miss','Not here. Try again.');
+    }
+  } catch(e){ console.error(e); toast('network error',true); glow.remove(); }
+  finally{ qvs.busy=false; }
+});
+
+async function qvsReveal(){
+  if(qvs.revealed||!qvs.image_id) return;
+  qvs.revealed=true;
+  $('qvs-imgwrap').classList.add('readonly');
+  const res=await api('/api/v1/davinci/secrets/reveal',{image_id:qvs.image_id});
+  if(res.data.error){ toast(res.data.error,true); return; }
+  document.querySelectorAll('.qvs-glow').forEach(n=>n.remove());
+  (res.data.secrets||[]).forEach(s=>{
+    if(typeof s.cx==='number'&&typeof s.cy==='number'){
+      qvsGlow(s.cx,s.cy,s.found?'found':'miss');
+    }
+  });
+  toast('👁 '+((res.data.secrets||[]).length)+' secrets revealed');
+}
+$('qvs-reveal').onclick=qvsReveal;
+$('qvs-close').onclick=()=>{ $('qvs-stage').hidden=true; $('qvs-modal').hidden=true; };
+$('qvs-modal-close').onclick=()=>{ $('qvs-modal').hidden=true; };
+$('qvs-modal').addEventListener('click',e=>{ if(e.target===$('qvs-modal')) $('qvs-modal').hidden=true; });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(!$('qvs-modal').hidden) $('qvs-modal').hidden=true;
+    else if(!$('qvs-stage').hidden) $('qvs-stage').hidden=true;
+  }
+});
+
+/* ═══════ Submit override ═══════ */
+$('submitBtn').onclick=async function(){
+  const text=$('prompt').value.trim();
+  if(!text){ $('prompt').focus(); return; }
+  if(active==='edit'&&!file){ alert('Please upload an image before using Edit Image.'); return; }
+  if(active==='video'||active==='chat'){ toast('این حالت به‌زودی فعال می‌شود · Coming soon',true); return; }
+
+  this.disabled=true;
+  const orig=this.textContent;
+  try{
+    if(qvs.active){
+      await generateWithSecrets(text);
+    } else {
+      await generateNormal(text);
+    }
+  } catch(e){
+    console.error(e); toast('Network error',true);
+    $('status').textContent='✗ Error';
+  } finally{
+    this.disabled=false; this.textContent=orig;
+  }
+};
+
+/* Expose for debugging */
+window.__davinci = { getToken, api, generateNormal, generateWithSecrets, qvs };
+</script>
+</body>
+</html>
